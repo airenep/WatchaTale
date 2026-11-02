@@ -1,0 +1,24 @@
+
+{
+  "name": "WatchaTale",
+  "short_name": "WatchaTale",
+  "description": "Interactive short stories by Air",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icons/watchatale-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/watchatale-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
