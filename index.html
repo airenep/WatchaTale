@@ -544,23 +544,29 @@
 
     
 /* STORY BUTTON HOVER SOUND EFFECTS */
-const storyButtons = document.querySelectorAll(
-  ".button-one, .button-two, .button-three"
-);
+const buttonSound = new Audio("./button-click.MP3");
+buttonSound.preload = "auto";
+buttonSound.volume = 0.5;
 
-storyButtons.forEach((button) => {
-  button.addEventListener("mouseenter", () => {
-    const hoverSound = new Audio("button-click.MP3");
-    hoverSound.volume = 0.5;
-    hoverSound.play().catch(() => {});
-  });
+let soundUnlocked = false;
 
-  button.addEventListener("click", () => {
-    const clickSound = new Audio("button-click.MP3");
-    clickSound.volume = 0.5;
-    clickSound.play().catch(() => {});
+// Enable sound after your first click on the page
+document.addEventListener("click", () => {
+  soundUnlocked = true;
+}, { once: true });
+
+// Play sound when hovering over a story button
+document.querySelectorAll(".button-one, .button-two, .button-three")
+  .forEach(button => {
+    button.addEventListener("mouseenter", () => {
+      if (!soundUnlocked) return;
+
+      buttonSound.currentTime = 0;
+      buttonSound.play().catch(error => {
+        console.log("Sound could not play:", error);
+      });
+    });
   });
-});
   </script>
 
 </body>
